@@ -1,5 +1,3 @@
-package Design_Patterns_and_Principles.SingletonPatternExample;
-
 public class Logger {
 	private static Logger instance;
 

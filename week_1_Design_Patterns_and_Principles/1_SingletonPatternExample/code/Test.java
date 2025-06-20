@@ -1,4 +1,3 @@
-package Design_Patterns_and_Principles.SingletonPatternExample;
 
 public class Test {
 
