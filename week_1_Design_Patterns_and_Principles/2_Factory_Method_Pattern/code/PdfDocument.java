@@ -1,4 +1,4 @@
-package Design_Patterns_and_Principles.Factory_Method_Pattern;
+
 
 public class PdfDocument implements Document{
 	public void open() {
