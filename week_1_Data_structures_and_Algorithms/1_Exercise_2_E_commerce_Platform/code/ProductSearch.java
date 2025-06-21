@@ -11,6 +11,10 @@ public class ProductSearch {
 	
 	public static int BinarySearch(Product[] products, int target, int low, int high) {
 		
+		if (low > high) {
+	        return -1; // Base case: target is not found
+	    }
+		
 		int mid = (low+high)/2;
 		int val = products[mid].productID;
 		if(val == target) {
