@@ -7,7 +7,7 @@ BEGIN
       AND l.InterestRate >= 1
   ) LOOP
     UPDATE Loans
-    SET InterestRate = rec.InterestRate - 1
+    SET InterestRate = rec.InterestRate *0.99;
     WHERE LoanID = rec.LoanID;
   END LOOP;
   COMMIT;
