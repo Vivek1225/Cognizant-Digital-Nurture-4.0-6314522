@@ -1,3 +1,5 @@
+set serveroutput on;
+
 CREATE OR REPLACE PROCEDURE transfer_amount (
     p_from_acct IN NUMBER,
     p_to_acct   IN NUMBER,
