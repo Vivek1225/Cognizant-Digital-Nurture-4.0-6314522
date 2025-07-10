@@ -4,27 +4,27 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="us" class="com.cognizant.springlearn.Country">
+    <bean id="us" class="com.cognizant.springlearn.model.Country">
         <property name="code" value="US" />
         <property name="name" value="United States" />
     </bean>
 
-    <bean id="de" class="com.cognizant.springlearn.Country">
+    <bean id="de" class="com.cognizant.springlearn.model.Country">
         <property name="code" value="DE" />
         <property name="name" value="Germany" />
     </bean>
 
-    <bean id="in" class="com.cognizant.springlearn.Country">
+    <bean id="in" class="com.cognizant.springlearn.model.Country">
         <property name="code" value="IN" />
         <property name="name" value="India" />
     </bean>
 
-    <bean id="jp" class="com.cognizant.springlearn.Country">
+    <bean id="jp" class="com.cognizant.springlearn.model.Country">
         <property name="code" value="JP" />
         <property name="name" value="Japan" />
     </bean>
 
-    <bean id="countryService" class="com.cognizant.springlearn.CountryService">
+    <bean id="countryService" class="com.cognizant.springlearn.Service.CountryService">
         <property name="countries">
             <map>
                 <entry key="US" value-ref="us" />
