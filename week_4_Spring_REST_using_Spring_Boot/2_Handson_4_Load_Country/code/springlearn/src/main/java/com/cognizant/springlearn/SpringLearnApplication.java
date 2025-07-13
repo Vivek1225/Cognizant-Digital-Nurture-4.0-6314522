@@ -1,27 +1,32 @@
 package com.cognizant.springlearn;
 
-import com.cognizant.springlearn.Service.CountryService;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.cognizant.springlearn.model.Country;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@SpringBootApplication
 public class SpringLearnApplication {
     private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplication.class);
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringLearnApplication.class, args);
+    public static void displayCountries() {
+        // Loading the Spring configuration file
+        ApplicationContext context = new ClassPathXmlApplicationContext("country.xml");
 
+        // Retrieving all country beans from Spring container
+        Country usCountry = context.getBean("usCountry", Country.class);
+        Country deCountry = context.getBean("deCountry", Country.class);
+        Country inCountry = context.getBean("inCountry", Country.class);
+        Country jpCountry = context.getBean("jpCountry", Country.class);
+
+        LOGGER.info("=== Country Details ===");
+        LOGGER.info("US: {}", usCountry);
+        LOGGER.info("DE: {}", deCountry);
+        LOGGER.info("IN: {}", inCountry);
+        LOGGER.info("JP: {}", jpCountry);
     }
 
-    public static void displayCountries() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("country.xml");
-        CountryService service = context.getBean("countryService", CountryService.class);
-
-        // This will automatically log all countries through the CountryService
-        LOGGER.info("Application started. Countries loaded from configuration.");
+    public static void main(String[] args) {
+        displayCountries();
     }
 }

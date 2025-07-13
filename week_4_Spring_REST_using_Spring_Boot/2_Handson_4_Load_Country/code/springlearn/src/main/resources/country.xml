@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="us" class="com.cognizant.springlearn.model.Country">
+    <!-- United States -->
+    <bean id="usCountry" class="com.cognizant.springlearn.model.Country">
         <property name="code" value="US" />
         <property name="name" value="United States" />
     </bean>
 
-    <bean id="de" class="com.cognizant.springlearn.model.Country">
+    <!-- Germany -->
+    <bean id="deCountry" class="com.cognizant.springlearn.model.Country">
         <property name="code" value="DE" />
         <property name="name" value="Germany" />
     </bean>
 
-    <bean id="in" class="com.cognizant.springlearn.model.Country">
+    <!-- India -->
+    <bean id="inCountry" class="com.cognizant.springlearn.model.Country">
         <property name="code" value="IN" />
         <property name="name" value="India" />
     </bean>
 
-    <bean id="jp" class="com.cognizant.springlearn.model.Country">
+    <!-- Japan -->
+    <bean id="jpCountry" class="com.cognizant.springlearn.model.Country">
         <property name="code" value="JP" />
         <property name="name" value="Japan" />
-    </bean>
-
-    <bean id="countryService" class="com.cognizant.springlearn.Service.CountryService">
-        <property name="countries">
-            <map>
-                <entry key="US" value-ref="us" />
-                <entry key="DE" value-ref="de" />
-                <entry key="IN" value-ref="in" />
-                <entry key="JP" value-ref="jp" />
-            </map>
-        </property>
     </bean>
 </beans>
