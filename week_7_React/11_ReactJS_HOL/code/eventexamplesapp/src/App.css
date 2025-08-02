@@ -1,0 +1,68 @@
+.App {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+.example {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #3498db;
+  margin-top: 0;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.message {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.result {
+  font-size: 18px;
+  color: #e74c3c;
+  font-weight: bold;
+}
