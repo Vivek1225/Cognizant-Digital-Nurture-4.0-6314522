@@ -1,0 +1,19 @@
+// src/components/BookDetails.js
+import React from 'react';
+
+function BookDetails({ book }) {
+  if (!book) {
+    return <div>No book selected</div>;
+  }
+
+  return (
+    <div>
+      <h2>Book Details</h2>
+      <p><strong>Title:</strong> {book.title}</p>
+      <p><strong>Author:</strong> {book.author}</p>
+      <p><strong>Year:</strong> {book.year}</p>
+    </div>
+  );
+}
+
+export default BookDetails;
