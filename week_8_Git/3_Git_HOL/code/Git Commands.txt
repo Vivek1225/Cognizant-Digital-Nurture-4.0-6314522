@@ -1,0 +1,119 @@
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git checkout -b GitNewBranch
+Switched to a new branch 'GitNewBranch'
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (GitNewBranch)
+$ echo "This is New Feature File" > feature.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (GitNewBranch)
+$ git add feature.txt
+warning: in the working copy of 'feature.txt', LF will be replaced by CRLF the next time Git touches it
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (GitNewBranch)
+$ git commit -m "Add feature file"
+[GitNewBranch fd3c965] Add feature file
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (GitNewBranch)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git diff main GitNewBranch
+diff --git a/feature.txt b/feature.txt
+index a11f211..18a77a4 100644
+--- a/feature.txt
++++ b/feature.txt
+@@ -1 +1 @@
+-New content
++This is New Feature File
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git difftool -t p4merge main GitNewBranch
+
+Viewing (1/1): 'feature.txt'
+Launch 'p4merge' [Y/n]? y
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git merge GitNewBranch
+Updating a7d1c41..fd3c965
+Fast-forward
+ feature.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git log --oneline --graph --all
+* fd3c965 (HEAD -> main, GitNewBranch) Add feature file
+* a7d1c41 create feature.txt
+* 06c0a52 Remove feature.txt
+* 2e59af1 (origin/main) Added new feature file
+* 840edc0 Adding .gitignore File
+* ee06195 Initial commit - added welcome.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git push origin main
+To https://gitlab.com/vivek_1225/gitdemo.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://gitlab.com/vivek_1225/gitdemo.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git pull origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 2 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (2/2), 229 bytes | 38.00 KiB/s, done.
+From https://gitlab.com/vivek_1225/gitdemo
+ * branch            main       -> FETCH_HEAD
+   2e59af1..f4614cd  main       -> origin/main
+CONFLICT (modify/delete): feature.txt deleted in f4614cd5f36ffc194db80597a70e298183570f9a and modified in HEAD.  Version HEAD of feature.txt left in tree.
+Automatic merge failed; fix conflicts and then commit the result.
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main|MERGING)
+$ git add .
+git commit -m "Merge remote changes"
+[main 48bbcd6] Merge remote changes
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git push origin main
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 914 bytes | 914.00 KiB/s, done.
+Total 8 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/vivek_1225/gitdemo.git
+   f4614cd..48bbcd6  main -> main
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git push origin GitNewBranch
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for GitNewBranch, visit:
+remote:   https://gitlab.com/vivek_1225/gitdemo/-/merge_requests/new?merge_request%5Bsource_branch%5D=GitNewBranch
+remote:
+To https://gitlab.com/vivek_1225/gitdemo.git
+ * [new branch]      GitNewBranch -> GitNewBranch
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git log --oneline --graph --decorate
+*   48bbcd6 (HEAD -> main, origin/main) Merge remote changes
+|\
+| * f4614cd Delete feature.txt
+* | fd3c965 (origin/GitNewBranch, GitNewBranch) Add feature file
+* | a7d1c41 create feature.txt
+* | 06c0a52 Remove feature.txt
+|/
+* 2e59af1 Added new feature file
+* 840edc0 Adding .gitignore File
+* ee06195 Initial commit - added welcome.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$
