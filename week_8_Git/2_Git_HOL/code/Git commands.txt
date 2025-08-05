@@ -1,0 +1,66 @@
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ echo "This is a sample log entry" > application.log
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ cat application.log
+This is a sample log entry
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        application.log
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ notepad++ .gitignore
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git add .gitignore
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitignore
+
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git commit -m "Adding .gitignore File"
+[main 840edc0] Adding .gitignore File
+ 1 file changed, 1 insertion(+)
+ create mode 100644 .gitignore
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 291 bytes | 291.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/vivek_1225/gitdemo.git
+   ee06195..840edc0  main -> main
+branch 'main' set up to track 'origin/main'.
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$
