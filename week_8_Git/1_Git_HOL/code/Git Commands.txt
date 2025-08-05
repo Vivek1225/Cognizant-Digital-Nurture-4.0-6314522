@@ -1,0 +1,103 @@
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo (main)
+$ git init
+initialized existing Git repository in C:/Users/vivek/GitDemo/.git/
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo (main)
+$ git config --local user.name "CHINTAKRINDI LAKSHMI VIVEK"
+git config --local user.email "22bq1a1229@vvit.net"
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo (main)
+$ notepad++
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo (main)
+$ git config --global core.editor "'C:/path/to/notepad++.exe' -multiInst -nosession"
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo (main)
+$ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosession"
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo (main)
+$ git config --global -e
+
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo (main)
+$ mkdir GitDemo
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo (main)
+$ cd GitDemo
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git init
+Reinitialized existing Git repository in C:/Users/vivek/GitDemo/gitdemo/.git/
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ ls -a
+./  ../  .git/
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ echo "Welcome to Version Control" > welcome.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ ls
+welcome.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ cat welcome.txt
+Welcome to Version Control
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        welcome.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git add welcome.txt
+warning: in the working copy of 'welcome.txt', LF will be replaced by CRLF the next time Git touches it
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   welcome.txt
+
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git commit -m "Initial commit - added welcome.txt"
+[main (root-commit) ee06195] Initial commit - added welcome.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 welcome.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git log
+commit ee06195aa1899002a38da7236f11529ba8a41a50 (HEAD -> main)
+Author: Vivek1225 <22bq1a1229@vvit.net>
+Date:   Tue Aug 5 10:59:56 2025 +0530
+
+    Initial commit - added welcome.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git remote -v
+origin  https://gitlab.com/vivek_1225/gitdemo.git (fetch)
+origin  https://gitlab.com/vivek_1225/gitdemo.git (push)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/GitDemo (main)
+$ git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 256 bytes | 256.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/vivek_1225/gitdemo.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+

@@ -1,0 +1,40 @@
+/* Light Theme */
+.light {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.btn-light {
+  background-color: #f0f0f0;
+  color: #333333;
+  border: 1px solid #ddd;
+}
+
+/* Dark Theme */
+.dark {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.btn-dark {
+  background-color: #555555;
+  color: #ffffff;
+  border: 1px solid #777;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.toggle-btn.light {
+  background-color: #eee;
+  color: #333;
+}
+
+.toggle-btn.dark {
+  background-color: #555;
+  color: #fff;
+}
