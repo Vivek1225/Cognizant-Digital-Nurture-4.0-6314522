@@ -1,0 +1,202 @@
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git checkout -b GitWork
+Switched to a new branch 'GitWork'
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (GitWork)
+$ echo "<message>Hello from GitWork</message>" > hello.xml
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (GitWork)
+$ git status
+On branch GitWork
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.xml
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (GitWork)
+$ echo "<message>Updated content in GitWork branch</message>" > hello.xml
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (GitWork)
+$ git status
+On branch GitWork
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.xml
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (GitWork)
+$ git add hello.xml
+warning: in the working copy of 'hello.xml', LF will be replaced by CRLF the next time Git touches it
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (GitWork)
+$ git commit -m "Add and update hello.xml in GitWork branch"
+[GitWork f837f20] Add and update hello.xml in GitWork branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (GitWork)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ echo "<message>Hello from main branch</message>" > hello.xml
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git add hello.xml
+warning: in the working copy of 'hello.xml', LF will be replaced by CRLF the next time Git touches it
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git commit -m "Add hello.xml in main with different content"
+[main bffd831] Add hello.xml in main with different content
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git log --oneline --graph --decorate --all
+* bffd831 (HEAD -> main) Add hello.xml in main with different content
+| * f837f20 (GitWork) Add and update hello.xml in GitWork branch
+|/
+*   48bbcd6 (origin/main) Merge remote changes
+|\
+| * f4614cd Delete feature.txt
+* | fd3c965 (origin/GitNewBranch, GitNewBranch) Add feature file
+* | a7d1c41 create feature.txt
+* | 06c0a52 Remove feature.txt
+|/
+* 2e59af1 Added new feature file
+* 840edc0 Adding .gitignore File
+* ee06195 Initial commit - added welcome.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git diff main GitWork -- hello.xml
+diff --git a/hello.xml b/hello.xml
+index dc8ea3d..ebf1841 100644
+--- a/hello.xml
++++ b/hello.xml
+@@ -1 +1 @@
+-<message>Hello from main branch</message>
++<message>Updated content in GitWork branch</message>
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git config --global merge.tool p4merge
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git config --global diff.tool p4merge
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git config --global mergetool.p4merge.cmd '"C:/Program Files/Perforce/p4merge.exe" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git config --global difftool.p4merge.cmd '"C:/Program Files/Perforce/p4merge.exe" "$LOCAL" "$REMOTE"'
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git difftool main GitWork -- hello.xml
+
+Viewing (1/1): 'hello.xml'
+Launch 'p4merge' [Y/n]? y
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git merge GitWork
+Auto-merging hello.xml
+CONFLICT (add/add): Merge conflict in hello.xml
+Automatic merge failed; fix conflicts and then commit the result.
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main|MERGING)
+$ cat hello.xml
+<<<<<<< HEAD
+<message>Hello from main branch</message>
+=======
+<message>Updated content in GitWork branch</message>
+>>>>>>> GitWork
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main|MERGING)
+$ git mergetool
+Merging:
+hello.xml
+
+Normal merge conflict for 'hello.xml':
+  {local}: created file
+  {remote}: created file
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main|MERGING)
+$ git commit -m "Merge GitWork into master with resolved conflict"
+[main 9e5cd9f] Merge GitWork into master with resolved conflict
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.xml.orig
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ echo "*.orig" >> .gitignore
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git add .gitignore
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git commit -m "Add .orig files to .gitignore"
+[main 72bdbec] Add .orig files to .gitignore
+ 1 file changed, 1 insertion(+)
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git branch
+  GitNewBranch
+  GitWork
+* main
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git branch -d GitWork
+Deleted branch GitWork (was f837f20).
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git log --oneline --graph --decorate
+* 72bdbec (HEAD -> main) Add .orig files to .gitignore
+*   9e5cd9f Merge GitWork into master with resolved conflict
+|\
+| * f837f20 Add and update hello.xml in GitWork branch
+* | bffd831 Add hello.xml in main with different content
+|/
+*   48bbcd6 (origin/main) Merge remote changes
+|\
+| * f4614cd Delete feature.txt
+* | fd3c965 (origin/GitNewBranch, GitNewBranch) Add feature file
+* | a7d1c41 create feature.txt
+* | 06c0a52 Remove feature.txt
+|/
+* 2e59af1 Added new feature file
+* 840edc0 Adding .gitignore File
+* ee06195 Initial commit - added welcome.txt
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$ git push -u origin main
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (12/12), 1.29 KiB | 1.29 MiB/s, done.
+Total 12 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/vivek_1225/gitdemo.git
+   48bbcd6..72bdbec  main -> main
+branch 'main' set up to track 'origin/main'.
+
+Vivekc7@Vivekc07 MINGW64 ~/GitDemo/gitdemo (main)
+$
